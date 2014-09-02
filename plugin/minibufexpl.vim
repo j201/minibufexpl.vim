@@ -1996,7 +1996,7 @@ endfunction
 " }}}
 " NumberCmp - compares tabs based on number {{{
 "
-function! <SID>NameCmp(tab1, tab2)
+function! <SID>NumberCmp(tab1, tab2)
   let l:number1 = str2nr(matchstr(a:tab1, "\d\+"))
   let l:number2 = str2nr(matchstr(a:tab2, "\d\+"))
   if l:number1 < l:number2
