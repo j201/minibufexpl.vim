@@ -1546,7 +1546,7 @@ function! <SID>BuildBufferList(curBufNum)
         call sort(l:tabList, "<SID>NameCmp")
     elseif t:miniBufExplSortBy == "mru"
         call sort(l:tabList, "<SID>MRUCmp")
-    elseif t:miniBufExplSortBy == "number" and g:miniBufExplShowBufNumbers == 1
+    elseif t:miniBufExplSortBy == "number" && g:miniBufExplShowBufNumbers == 1
         call sort(l:tabList, "<SID>NumberCmp")
     endif
 
