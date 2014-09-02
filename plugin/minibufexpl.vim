@@ -1546,6 +1546,8 @@ function! <SID>BuildBufferList(curBufNum)
         call sort(l:tabList, "<SID>NameCmp")
     elseif t:miniBufExplSortBy == "mru"
         call sort(l:tabList, "<SID>MRUCmp")
+    elseif t:miniBufExplSortBy == "number" and g:miniBufExplShowBufNumbers == 1
+        call sort(l:tabList, "<SID>NumberCmp")
     endif
 
     let l:miniBufExplBufList = ''
@@ -1985,6 +1987,21 @@ function! <SID>NameCmp(tab1, tab2)
   if l:name1 < l:name2
     return -1
   elseif l:name1 > l:name2
+    return 1
+  else
+    return 0
+  endif
+endfunction
+
+" }}}
+" NumberCmp - compares tabs based on number {{{
+"
+function! <SID>NameCmp(tab1, tab2)
+  let l:number1 = str2nr(matchstr(a:tab1, "\d\+"))
+  let l:number2 = str2nr(matchstr(a:tab2, "\d\+"))
+  if l:number1 < l:number2
+    return -1
+  elseif l:number1 > l:number2
     return 1
   else
     return 0
